@@ -1,0 +1,6 @@
+(executable
+ (name solution)
+ (libraries utils)
+ (promote
+  (until-clean)
+  (into ../..)))
