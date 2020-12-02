@@ -3,16 +3,13 @@ open Utils.List_utils
 
 module Solver : Solver = struct
   let get_conditions policy =
-    (*
-      String matching gre lahka nekam.
-      "There has to be a better way" - Raymond Hettinger
-    *)
-    let li = String.split_on_char ' ' policy in
-    let bound_li = String.split_on_char '-' (List.nth li 0)
-    and letter = List.nth li 1 in
-    let lower = int_of_string (List.nth bound_li 0)
-    and upper = int_of_string (List.nth bound_li 1) in
-    (lower, upper, letter.[0])
+    match String.split_on_char ' ' policy with
+    | [ bounds; chr ] -> (
+        match String.split_on_char '-' bounds with
+        | [ lower; upper ] -> (int_of_string lower, int_of_string upper, chr.[0])
+        | _ -> failwith "Napacen format vrste!!"
+      )
+    | _ -> failwith "Napacen format vrste!!"
 
   let count_letter_in_string character str =
     List.length (String.split_on_char character str) - 1
