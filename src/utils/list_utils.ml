@@ -9,7 +9,5 @@ module List = struct
 
   let lines = String.split_on_char '\n'
 
-  let non_empty_lines l = List.filter (fun x -> String.length x > 0) (lines l)
-
   let with_index l = List.mapi (fun i x -> (i, x)) l
 end
