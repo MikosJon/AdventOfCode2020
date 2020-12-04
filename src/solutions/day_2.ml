@@ -7,8 +7,7 @@ module Solver : Solver = struct
     | [ bounds; chr ] -> (
         match String.split_on_char '-' bounds with
         | [ lower; upper ] -> (int_of_string lower, int_of_string upper, chr.[0])
-        | _ -> failwith "Napacen format vrste!!"
-      )
+        | _ -> failwith "Napacen format vrste!!")
     | _ -> failwith "Napacen format vrste!!"
 
   let count_letter_in_string character str =
