@@ -3,6 +3,10 @@ module List = struct
 
   let int_list l = List.map int_of_string l
 
+  let max l =
+    let rec max' acc = function [] -> acc | x :: xs -> max' (max x acc) xs in
+    match l with [] -> failwith "Max of empty list!" | x :: _ -> max' x l
+
   let sum l =
     let rec sum' a = function [] -> a | x :: xs -> sum' (a + x) xs in
     sum' 0 l
