@@ -15,19 +15,12 @@ module List = struct
     let rec prod' a = function [] -> a | x :: xs -> prod' (a * x) xs in
     prod' 1 l
 
-  let reverse l =
-    let rec reverse' acc = function
-      | [] -> acc
-      | x :: xs -> reverse' (x :: acc) xs
-    in
-    reverse' [] l
-
   let apply arg l =
     let rec apply' acc = function
       | [] -> acc
       | f :: fs -> apply' (f arg :: acc) fs
     in
-    reverse (apply' [] l)
+    List.rev (apply' [] l)
 
   let lines = String.split_on_char '\n'
 
