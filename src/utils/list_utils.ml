@@ -7,6 +7,10 @@ module List = struct
     let rec max' acc = function [] -> acc | x :: xs -> max' (max x acc) xs in
     match l with [] -> failwith "Max of empty list!" | x :: _ -> max' x l
 
+  let min l =
+    let rec min' acc = function [] -> acc | x :: xs -> min' (min x acc) xs in
+    match l with [] -> failwith "Min of empty list!" | x :: _ -> min' x l
+
   let sum l =
     let rec sum' a = function [] -> a | x :: xs -> sum' (a + x) xs in
     sum' 0 l
