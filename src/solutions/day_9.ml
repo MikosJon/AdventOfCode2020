@@ -32,8 +32,11 @@ module Solver : Solver = struct
     | x :: xs -> (
         match List.find_opt (fun (n, _) -> n = goal - x) acc with
         | None ->
-            let new_acc =
+            let updated_sums =
               (x, [ x ]) :: List.map (fun (n, li) -> (n + x, x :: li)) acc
+            in
+            let new_acc =
+              List.filter (fun (num, _) -> num <= goal) updated_sums
             in
             find_partial_sum goal new_acc xs
         | Some (_, li) -> li)
