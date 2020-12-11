@@ -11,6 +11,7 @@ let choose_solver : string -> (module Solver) = function
   | "8" -> (module Day_8.Solver)
   | "9" -> (module Day_9.Solver)
   | "10" -> (module Day_10.Solver)
+  | "11" -> (module Day_11.Solver)
   | _ -> failwith "Ni še rešeno"
 
 let main () =
